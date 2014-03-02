@@ -4,4 +4,4 @@
 *.swp
 *.out
 *.komodoproject
-assets/
+config.php

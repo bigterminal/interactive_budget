@@ -52,7 +52,7 @@ class Core_Model {
                     $data[$key][] = $object->make_array($object); 
                 } else {
                     $data[] = $object->make_array($object);
-                }        
+                }
             }
         }
         
@@ -132,10 +132,14 @@ class Core_Model {
                     if (is_int($value)) {
                         $object->$attribute = (int)$value;
                     } else {
-                     $object->$attribute = (float)$value; 
+                        $object->$attribute = (float)$value; 
                     }
                 } else {
-                    $object->$attribute = $value;
+                    if ($value == null) {
+                        $object->$attribute = 'null';
+                    } else {
+                        $object->$attribute = $value;
+                    }
                 }
             }
         }

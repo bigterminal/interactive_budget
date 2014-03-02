@@ -51,7 +51,7 @@ class API_Controller extends Core_Controller {
                 header($header);
             }
             
-            return json_encode(array_remove_empty($response));
+            return json_encode($response);
         
         } catch (Exception $e) {
             if (DEBUG) {
