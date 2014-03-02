@@ -62,7 +62,6 @@
     <script src="/js/main.js" type="text/javascript">
     </script>
 
-    <footer>Interactive budget was created by, <a href="https://bigterminal.com">Adam Rabie</a>, <a href="https://twitter.com/WiseBeard">Brian Pullen</a> and <a href="http://johnbaker.ca/">John Baker</a> for CODE. Special thanks to D3 for charts and The New York Times for insperation.<
-    /footer>
+    <footer>Interactive budget was created by, <a href="https://bigterminal.com">Adam Rabie</a>, <a href="https://twitter.com/WiseBeard">Brian Pullen</a> and <a href="http://johnbaker.ca/">John Baker</a> for CODE. Special thanks to D3 for charts and The New York Times for insperation.</footer>
   </body>
 </html>

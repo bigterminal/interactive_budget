@@ -19,6 +19,12 @@ var vis = d3.select(".bubble-chart-cont").insert("svg:svg", "h2")
     .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
 
 
+
+$.get("http://hackathon.local/api/budgets").done(function(data){
+    debugger;
+});
+
+
 function bubbleFullscreen(){
     $("circle.child").show();
     $(".bubble-chart-cont svg").css({
