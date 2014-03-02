@@ -184,6 +184,7 @@ header nav .selected {
   top: 50%;
   position: absolute;
   margin-top: -275px;
+  z-index: 1;
 }
 
 .information-box-cont h2 {
@@ -317,6 +318,28 @@ footer {
   width: 100%;
 }
 
+
+.tooltip > label > span {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+}
+
+.public-debt-bubble div {
+  display: none;
+  font-size: 14px;
+  border-radius: 300px;
+  border: 1px dashed gray;
+  padding: 120px 25px;
+  float: right;
+  position: absolute; 
+  right: 35px;
+  top: 50%;
+  margin-top: -140px;
+}
+
 /* d3 stylings */
 
 text {
@@ -354,12 +377,4 @@ circle.parent:first-child {
 
 text {
   display: none;
-}
-
-.tooltip > label > span {
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  white-space: nowrap;
 }

@@ -3,7 +3,6 @@
   <head>
     <title>Interactive Budget Canada</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
 
     <link type="text/css" rel="stylesheet" href="/css/style.css"/>
   </head>
@@ -56,6 +55,9 @@
         <div class="value">$<span>1.8</span> billion</div>
         <div class="percent-change">0.8%</div>
       </div>
+    </div>
+    <div class="public-debt-bubble">
+        <div>$30 billion in public debt servicing</div>
     </div>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
