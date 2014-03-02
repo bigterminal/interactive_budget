@@ -28,6 +28,20 @@ Another ambitious tool we plan is to add in the data from other major economies 
 5. <b>Real Time Budget</b><br>
 The last feature we hope to create is a real time budget graph that shows the current annual budget alongside real time spending. In this way citizens can monitor the spending in programs and understand where overspending or changes are happening. This real time tool would be useful not only to citizens but to business and government representatives.
 
+Setup
+-----
+
+* <i>Should work with most LAMP stacks</i>
+* Clone repo into working directory
+* Set DocumentRoot to public/
+* Import ~/db/structure.sql into MySQL
+* Copy private/template.config.php to private/config.php
+* Populate required configuration properties
+* Create directory private/templates/cache
+* Ensure webserver has read/write to private/templates/cache
+* To populate data MODE in config.php must not be PRODUCTION
+* Request /api/process/data to parse & process data into database
+
 Meta
 ----
 
