@@ -18,7 +18,6 @@ class Budget_Model extends Core_Model {
     
     protected $id;
     protected $category_id;
-    protected $category_name;
     protected $name;
     protected $total_2012;
     protected $total_2013;
