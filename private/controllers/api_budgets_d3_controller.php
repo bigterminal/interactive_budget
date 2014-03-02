@@ -55,6 +55,12 @@ class API_Budgets_D3_Controller extends API_Controller {
                 }
             }
             
+            array_push($this->response['budget']['children'], array(
+                'name' => 'Public Debt',
+                'delta' => -5.9945,
+                'size' => (int)round(27130000000 / $this->scale)                
+            ));
+            
             $this->set_response_code(200);
             $this->response_contents = array(
                 $this->response

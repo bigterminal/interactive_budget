@@ -4,5 +4,5 @@
 *.swp
 *.out
 *.komodoproject
-*/config.php
-*/cache/*
+private/config.php
+private/templates/cache/
