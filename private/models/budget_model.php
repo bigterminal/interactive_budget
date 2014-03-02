@@ -81,7 +81,7 @@ class Budget_Model extends Core_Model {
     
     public function set_delta_p_2014_2012() {
         if (isset($this->total_2014) && isset($this->total_2012)) {
-            $this->delta_p_2014_2012 = $this->percent_different($this->total_2014, $this->total_2012);
+            $this->delta_p_2014_2012 = self::percent_different($this->total_2014, $this->total_2012);
         }
     }
     
@@ -91,7 +91,7 @@ class Budget_Model extends Core_Model {
     
     public function set_delta_v_2014_2012() {
         if (isset($this->total_2014) && isset($this->total_2012)) {
-            $this->delta_v_2014_2012 = $this->value_difference($this->total_2014, $this->total_2012);
+            $this->delta_v_2014_2012 = self::value_difference($this->total_2014, $this->total_2012);
         }
     }
     
@@ -101,7 +101,7 @@ class Budget_Model extends Core_Model {
     
     public function set_delta_p_2014_2013() {
         if (isset($this->total_2014) && isset($this->total_2013)) {
-            $this->delta_p_2014_2013 = $this->percent_different($this->total_2014, $this->total_2013);
+            $this->delta_p_2014_2013 = self::percent_different($this->total_2014, $this->total_2013);
         }
     }
     
@@ -111,15 +111,15 @@ class Budget_Model extends Core_Model {
     
     public function set_delta_v_2014_2013() {
         if (isset($this->total_2014) && isset($this->total_2013)) {
-            $this->delta_v_2014_2013 = $this->value_difference($this->total_2014, $this->total_2013);
+            $this->delta_v_2014_2013 = self::value_difference($this->total_2014, $this->total_2013);
         }
     }
     
-    function value_difference($value1, $value2) {
+    public static function value_difference($value1, $value2) {
         return $value1 - $value2;
     }
     
-    function percent_different($value1, $value2) {
-        return ($value2 == 0) ? null : ($this->value_difference($value1, $value2) / $value2) * 100;
+    public static function percent_different($value1, $value2) {
+        return ($value2 == 0) ? null : (self::value_difference($value1, $value2) / $value2) * 100;
     }
 }
