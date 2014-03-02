@@ -62,9 +62,9 @@ function bubbleFullscreenReverse(){
   $("text").hide();
   $("circle.child").hide();
 
-
-   $(".zoom-mode").hide();
-   $(".normal-mode").show();
+  $("circle.parent").attr("opacity","1");
+  $(".zoom-mode").hide();
+  $(".normal-mode").show();
   /*
     
     $(".bubble-chart-cont svg").animate({
@@ -119,8 +119,8 @@ d3.json("/api/budgets/d3", function(data) {
             $(this).attr("cx", windowHeight + d.x*0.55);
           } else if(delta > 15){
             $(this).css({"fill":"#1b7e69", "stroke":"#257160"});
-            $(this).attr("cy", windowHeight - d.y*0.55);
-            $(this).attr("cx", windowHeight + d.x*1.00);
+            $(this).attr("cy", windowHeight - d.y*0.25);
+            $(this).attr("cx", windowHeight + d.x*0.25);
           } else if(delta < 0 && delta >= -5){
             $(this).css({"fill":"#eb6759", "stroke":"#dc594b"});
             $(this).attr("cy", windowHeight + d.y*0.65);
