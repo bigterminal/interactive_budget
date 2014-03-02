@@ -52,8 +52,8 @@
     </div>
     <div class="bubble-chart-cont">
       <div class="tooltip"><span></span>
-        <label>Transportation Services<label>
-        <div class="value">$1.8 billion</div>
+        <label><span>Transportation Services</span><label>
+        <div class="value">$<span>1.8</span> billion</div>
         <div class="percent-change">0.8%</div>
       </div>
     </div>

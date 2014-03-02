@@ -102,7 +102,12 @@ body > svg {
   -webkit-box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.15);     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.15);     background: -moz-linear-gradient(top,  #F7F7F7 0%, #F5F5F5 100%); /* FF3.6+ */      /* Chrome,Safari4+ */      /* Chrome10+,Safari5.1+ */      /* Opera 11.10+ */  background: -ms-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(255,255,255,1) 100%); /* IE10+ */      /* W3C */  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */;
 }
 
-.tooltip span {
+.tooltip.overflow-top {
+  margin-top: 10px !important;
+}
+
+
+.tooltip > span {
   border-left: 7px solid rgba(0, 0, 0, 0);
   border-right: 7px solid rgba(0, 0, 0, 0);
   border-top: 7px solid #FFF;
@@ -113,6 +118,11 @@ body > svg {
   margin-left: -7px;
 }
 
+.tooltip.overflow-top > span {
+    border-top: 0;
+    border-bottom: 7px solid #FFF;
+    margin-top: -17px;
+}
 
 .canadian-flag {
   background: url(/images/maple-leaf.png) no-repeat;
@@ -291,6 +301,7 @@ header nav .selected {
   font-size: 27px;
   font-weight: bold;
   margin: 8px 0;
+  white-space: nowrap;
 }
 
 .tooltip .percent-change {
@@ -325,20 +336,30 @@ circle {
 
 circle.parent {
   fill: #3a9d88;
-  fill-opacity: .5;
+  fill-opacity: 1;
   stroke: #338574;
 }
 
-circle.parent:hover {
-  stroke: #13342d;
-  stroke-width: .5px;
+circle.parent:hover, circle.child:hover {
+  stroke-width: 5px;
 }
 
 circle.child {
-  pointer-events: none;
   display: none;
 }
 
 circle.parent:first-child {
   display: none;
+}
+
+text {
+  display: none;
+}
+
+.tooltip > label > span {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
 }
