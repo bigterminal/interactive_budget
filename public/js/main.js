@@ -6,6 +6,8 @@ var w = $(window).width(),
     node,
     root;
 
+var clicked = false;
+
 var pack = d3.layout.pack()
     .size([r, r])
     .value(function(d) { 
@@ -29,7 +31,12 @@ var vis = d3.select(".bubble-chart-cont").insert("svg:svg", "h2")
 
 
 function bubbleFullscreen(){
-/*    $("circle.child").show();
+  //$("text").show();/*
+  $("circle.child").show();
+  $(".zoom-mode").show();
+  $(".normal-mode").hide();
+
+/*    
     $(".bubble-chart-cont svg").css({
       "margin-left": 0,
       "height": "100vh",
@@ -48,14 +55,18 @@ function bubbleFullscreen(){
       "left": "",
       "margin-left": "0"     
     });
-   $(".zoom-mode").show();
-   $(".normal-mode").hide();
-   */
+*/
 }
 
 function bubbleFullscreenReverse(){
+  $("text").hide();
+  $("circle.child").hide();
+
+
+   $(".zoom-mode").hide();
+   $(".normal-mode").show();
   /*
-    $("circle.child").hide();
+    
     $(".bubble-chart-cont svg").animate({
       "margin-left": "",
       "top": "",
@@ -74,8 +85,6 @@ function bubbleFullscreenReverse(){
       "margin-left": "-384px"     
     });
 
-   $(".zoom-mode").hide();
-   $(".normal-mode").show();
    */
 }
 
@@ -93,34 +102,68 @@ d3.json("http://hackathon.local/api/budgets/d3", function(data) {
       .data(nodes)      
     .enter().append("svg:circle")
       .attr("class", function(d) { return d.children ? "parent" : "child"; })
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; })
-      .attr("r", function(d) { return d.r; })
-      .attr("dx", function(d) { 
-      /* 
-        var dx; 
-        if(d.children.lenght !== 0){
-          if(d.children[0].children[0].children[0] > 10000){ 
-            dx = 10;
+      .attr("cx", function(d) { return d.x})
+      .attr("cy", function(d) { return d.y})
+      .attr("r", function(d) { return d.r})
+      .attr("fill", function(d) {
+        var delta = d.delta;
+          if(delta > 0 && delta <= 5){
+            $(this).css({"fill":"#46b29a", "stroke":"#308270"});
+          } else if(delta > 5 && delta <= 15){
+            $(this).css({"fill":"#3a9d88", "stroke":"#236456"});
+          } else if(delta > 15){
+            $(this).css({"fill":"#1b7e69", "stroke":"#257160"});
+          } else if(delta < 0 && delta >= -5){
+            $(this).css({"fill":"#eb6759", "stroke":"#dc594b"});
+          } else if(delta < 5 && delta >= -15){
+            $(this).css({"fill":"#e74c33", "stroke":"#ca422c"});
+          } else if(delta < 15){
+            $(this).css({"fill":"#c53b26", "stroke":"#ad301d"});
+          } else if(delta === 0){
+            $(this).css({"fill":"#9cb3c2", "stroke":"#849cab"});            
           } 
+          return 
         }
-        return dx;
-      */
-      })
+      )
       .on("mouseover", function(d){
           var left = parseInt($(this).position().left);
           var top = parseInt($(this).position().top);
           var radius = parseInt($(this).attr("r"));
+          var colour = $(this).css("fill");
+          var bottomOffset = $(window).height() - (radius * 2);
+          var value = d.value / 100000;
 
           left = left + radius;
-          $(".tooltip").css({"display": "block", "top": top, "left": left})
+          $(".tooltip > label > span").text(d.name);
+          $(".value > span:first-child").text(value.toFixed(2));
+          $(".tooltip .percent-change").text(parseFloat(d.delta.toFixed(2)) + "%");
+          $(".tooltip .percent-change").css("color",colour);
+
+
+
+          if(top < 100){
+            if(bottomOffset < 100) {
+             $(".tooltip").removeClass("overflow-top");                       
+            } else {
+             $(".tooltip").addClass("overflow-top");           
+            }
+             $(".tooltip").css({"display": "block", "top": top + (radius*2), "left": left});              
+          } else {
+             $(".tooltip").removeClass("overflow-top");                       
+             $(".tooltip").css({"display": "block", "top": top, "left": left});
+          }
+
+
       })
       .on("click", function(d) { 
-
-        if(d.name !== "Area"){
+        if(d.name !== "Budget" || clicked != true){
+          $(this).attr("opacity","0.5");
           bubbleFullscreen();
+          clicked = true;
         } else {
           bubbleFullscreenReverse();
+          $(this).attr("opacity","1");
+          clicked = false;
         }
 
         return zoom(node == d ? root : d); 
@@ -140,6 +183,7 @@ d3.json("http://hackathon.local/api/budgets/d3", function(data) {
   d3.select(window).on("click", function() { 
     zoom(root);         
     bubbleFullscreenReverse();
+
   });
 });
 
@@ -155,6 +199,7 @@ function zoom(d, i) {
       .attr("cx", function(d) { return x(d.x); })
       .attr("cy", function(d) { return y(d.y); })
       .attr("r", function(d) { return k * d.r; });
+  
 
   t.selectAll("text")
       .attr("x", function(d) { return x(d.x); })
@@ -166,6 +211,7 @@ function zoom(d, i) {
 }
 
 $(document).ready(function(){
+
  /* var aspect = w / h,
       chart = $(".bubble-chart-cont svg");
   $(window).on("resize", function() {
