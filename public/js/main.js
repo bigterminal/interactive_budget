@@ -31,63 +31,21 @@ var vis = d3.select(".bubble-chart-cont").insert("svg:svg", "h2")
 
 
 function bubbleFullscreen(){
-  //$("text").show();/*
   $("circle.child").show();
   $(".zoom-mode").show();
   $(".normal-mode").hide();
   $(".tooltip").hide();
-
-/*    
-    $(".bubble-chart-cont svg").css({
-      "margin-left": 0,
-      "height": "100vh",
-      "width": "100vw",
-      "top": 0,
-      "left": 0          
-    });
-    $("header").css({
-      "background": "rgba(205,211,213,0.7)",
-    });   
- 
-   $(".bubble-chart-cont").animate({
-      "position": "static",
-      "top": "0",
-      "margin-top": "0",
-      "left": "",
-      "margin-left": "0"     
-    });
-*/
+  $("header").css("border-bottom","solid 1px rgba(121, 125, 129, .15)");
 }
 
 function bubbleFullscreenReverse(){
   $("text").hide();
   $("circle.child").hide();
-
   $("circle.parent").attr("opacity","1");
   $(".zoom-mode").hide();
   $(".normal-mode").show();
   $(".tooltip").hide();
-  /*
-    
-    $(".bubble-chart-cont svg").animate({
-      "margin-left": "",
-      "top": "",
-      "left": ""          
-    });
-
-    $("header").css({
-      "background": "",
-    });  
-
-    $(".bubble-chart-cont").animate({
-      "position": "absolute",
-      "top": "50%",
-      "margin-top": "-240px",
-      "left": "50%",
-      "margin-left": "-384px"     
-    });
-
-   */
+  $("header").css("border-bottom","");
 }
 
 
@@ -99,6 +57,8 @@ d3.json("/api/budgets/d3", function(data) {
 
   var nodes = pack.nodes(root);
 
+
+//commenting out items are apart of an attempt to sort the informatoin differently, than spirals
 
   vis.selectAll("circle")
       .data(nodes)      
@@ -113,28 +73,28 @@ d3.json("/api/budgets/d3", function(data) {
         var windowHeight = $(window).height() / 2.25;
           if(delta > 0 && delta <= 5){
             $(this).css({"fill":"#46b29a", "stroke":"#308270"});
-            $(this).attr("cy", windowHeight - d.y*0.35);
-            $(this).attr("cx", d.x*0.55);
+           // $(this).attr("cy", windowHeight - d.y*0.35);
+           // $(this).attr("cx", d.x*0.55);
           } else if(delta > 5 && delta <= 15){
             $(this).css({"fill":"#3a9d88", "stroke":"#236456"});
-            $(this).attr("cy", windowHeight - d.y*0.45);
-            $(this).attr("cx", windowHeight + d.x*0.95);
+           // $(this).attr("cy", windowHeight - d.y*0.45);
+           // $(this).attr("cx", windowHeight + d.x*0.95);
           } else if(delta > 15){
             $(this).css({"fill":"#1b7e69", "stroke":"#257160"});
-            $(this).attr("cy", windowHeight - d.y*0.22);
-            $(this).attr("cx", windowHeight + d.x*0.35);
+           // $(this).attr("cy", windowHeight - d.y*0.22);
+           // $(this).attr("cx", windowHeight + d.x*0.35);
           } else if(delta < 0 && delta >= -5){
             $(this).css({"fill":"#eb6759", "stroke":"#dc594b"});
-            $(this).attr("cy", windowHeight + d.y*0.65);
-            $(this).attr("cx", windowHeight - d.x/3.95);
+          //  $(this).attr("cy", windowHeight + d.y*0.65);
+          //  $(this).attr("cx", windowHeight - d.x/3.95);
           } else if(delta < 5 && delta >= -15){
             $(this).css({"fill":"#e74c33", "stroke":"#ca422c"});
-            $(this).attr("cy", windowHeight + d.y*0.75);
-            $(this).attr("cx", windowHeight + d.x/2.55);
+          //  $(this).attr("cy", windowHeight + d.y*0.75);
+          //  $(this).attr("cx", windowHeight + d.x/2.55);
           } else if(delta < 15){
             $(this).css({"fill":"#c53b26", "stroke":"#ad301d"});
-            $(this).attr("cy", windowHeight + d.y*0.95);
-            $(this).attr("cx", windowHeight + d.x/1.30); 
+          //  $(this).attr("cy", windowHeight + d.y*0.95);
+          //  $(this).attr("cx", windowHeight + d.x/1.30); 
           } else if(delta === 0){
             $(this).css({"fill":"#9cb3c2", "stroke":"#849cab"});            
           } 
@@ -247,7 +207,7 @@ function zoom(d, i) {
 }
 
 $(document).ready(function(){
-
+//could be used to make graph responsive 
  /* var aspect = w / h,
       chart = $(".bubble-chart-cont svg");
   $(window).on("resize", function() {

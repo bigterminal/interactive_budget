@@ -15,10 +15,10 @@
       </div>
       <nav>
         <span class="selected">All Spending</span>
-        <span>Spending Types</span>
-        <span>Composition</span>
-        <span>Changes</span>
-        <span>Federal Income</span>
+        <span title="coming soon">Spending Types<span class="tooltip-header">coming soon<span></span></span></span>
+        <span title="coming soon">Composition<span class="tooltip-header">coming soon<span></span></span></span>
+        <span title="coming soon">Changes<span class="tooltip-header">coming soon<span></span></span></span>
+        <span title="coming soon">Federal Income<span class="tooltip-header">coming soon<span></span></span></span>
 
       </nav>
       <div class="share-cont">
@@ -39,7 +39,7 @@
       <h2>How $260 Billion was spent in 2013</h2>
       <p>Discover how the Fedearl Government of Canada spends and changes its spending as a part of the annual budget.</p>
       
-      <label>Circle size represents spending</label>
+      <label>Circle size represents spending subtotals</label>
       <div class="scale-info-circl-big">
         <label>$2.5 Billion</label>
         <label>$0.5 Billion</label>
