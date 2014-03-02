@@ -32,9 +32,11 @@ class API_Budgets_D3_Controller extends API_Controller {
                     if ($budget->get_category_id() == $category->get_id()) {
                         $size = (int)round($budget->get_total_2014() / $this->scale);
                         if ($size > 0) {
+                            $delta = $budget->get_delta_p_2014_2013();
+                            if ($delta == null || $delta == 'null') $delta = 0;
                             array_push($category_response['children'], array(
                                 'name' => $budget->get_name(),
-                                'delta' => $budget->get_delta_p_2014_2013(),
+                                'delta' => $delta,
                                 'size' => $size
                             ));
                             
@@ -45,7 +47,8 @@ class API_Budgets_D3_Controller extends API_Controller {
                 }
                 
                 $delta = Budget_Model::percent_different($category->total_2014, $category->total_2013);
-                if ($delta != null) $category_response['delta'] = $delta;
+                if ($delta == null) $delta = 0;
+                $category_response['delta'] = $delta;
                 
                 if (count($category_response['children']) > 0) {
                     array_push($this->response['budget']['children'], $category_response);
