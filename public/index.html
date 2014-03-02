@@ -1,139 +1,73 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Interactive Budget Canada</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <link type="text/css" rel="stylesheet" href="/css/style.css"/>
     <style type="text/css">
 
-text {
-  font-size: 11px;
-  pointer-events: none;
-}
 
-text.parent {
-  fill: white;
-}
 
-circle {
-  fill: #ccc;
-  stroke: #999;
-  pointer-events: all;
-}
-
-circle.parent {
-  fill: #3a9d88;
-  fill-opacity: .5;
-  stroke: #338574;
-}
-
-circle.parent:hover {
-  stroke: #13342d;
-  stroke-width: .5px;
-}
-
-circle.child {
-  pointer-events: none;
-  display: none;
-}
-
-    </style>
+  </style>
   </head>
+
   <body>
-    <div class="tooltip"><span></span>testing</div>
+    <header>
+      <div class="logo-cont">
+        <span class="canadian-flag"></span>
+        <span class="main-title">Interactive Budget</span>
+      </div>
+      <nav>
+        <span class="selected">All Spending</span>
+        <span>Spending Types</span>
+        <span>Composition</span>
+        <span>Changes</span>
+        <span>Federal Income</span>
+
+      </nav>
+    </header>
+    <div class="information-box-cont zoom-mode">
+      <h2>$1.18 Billion<span class="change-info">+8.4%</span></h2>
+      <h3>Department of Transportation</h3>
+    </div>
+    <div class="information-box-cont normal-mode">
+      <h2>How $260 Billion was spent in 2013</h2>
+      <p>Duis rhoncus nibh at quam blandit euismod. Donec ornare dui vitae magna euismod, vitae venenatis nisl pretium. Etiam iaculis fringilla mauris, et tristique tortor gravida eu</p>
+      
+      <label>Circle size represents spending</label>
+      <div class="scale-info-circl-big">
+        <label>$10 Billion</label>
+        <label>$1 Billion</label>
+        <div class="scale-info-circl-small"></div>
+      </div>
+
+     <label>Colour shows difference from 2012-2013</label>
+      <div class="gradient-info-cont">
+        <span>-25%</span>        
+        <span>-15%</span>        
+        <span>-5%</span>        
+        <span>0%</span>        
+        <span>+5%</span>        
+        <span>+15%</span>        
+        <span>+25%</span>        
+      </div>
+
+    </div>
+    <div class="bubble-chart-cont">
+      <div class="tooltip"><span></span>
+        <label>Transportation Services<label>
+        <div class="value">$1.8 billion</div>
+        <div class="percent-change">0.8%</div>
+      </div>
+    </div>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript">
-
-var w = 768,
-    h = 480,
-    r = 432,
-    x = d3.scale.linear().range([0, r]),
-    y = d3.scale.linear().range([0, r]),
-    node,
-    root;
-
-var pack = d3.layout.pack()
-    .size([r, r])
-    .value(function(d) { return d.size; })
-
-var vis = d3.select("body").insert("svg:svg", "h2")
-    .attr("width", w)
-    .attr("height", h)
-  .append("svg:g")
-    .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
-
-d3.json("js/area.json", function(data) {
-  node = root = data;
-
-  var nodes = pack.nodes(root);
-
-  vis.selectAll("circle")
-      .data(nodes)      
-    .enter().append("svg:circle")
-      .attr("class", function(d) { return d.children ? "parent" : "child"; })
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; })
-      .attr("r", function(d) { return d.r; })
-      .attr("dx", function(d) { 
-      /* 
-        var dx; 
-        if(d.children.lenght !== 0){
-          if(d.children[0].children[0].children[0] > 10000){ 
-            dx = 10;
-          } 
-        }
-        return dx;
-      */
-      })
-      .on("mouseover", function(d){
-          var left = parseInt($(this).position().left);
-          var top = parseInt($(this).position().top);
-          var radius = parseInt($(this).attr("r"));
-
-          left = left + radius;
-          $(".tooltip").css({"display": "block", "top": top, "left": left})
-      })
-      .on("click", function(d) { 
-        $("circle.child").show();
-        return zoom(node == d ? root : d); 
-      });
-
-  vis.selectAll("text")
-      .data(nodes)
-    .enter().append("svg:text")
-      .attr("class", function(d) { return d.children ? "parent" : "child"; })
-      .attr("x", function(d) { return d.x; })
-      .attr("y", function(d) { return d.y; })
-      .attr("dy", ".35em")
-      .attr("text-anchor", "middle")
-      .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
-      .text(function(d) { return d.name; });
-
-  d3.select(window).on("click", function() { zoom(root); });
-});
-
-function zoom(d, i) {
-  var k = r / d.r / 2;
-  x.domain([d.x - d.r, d.x + d.r]);
-  y.domain([d.y - d.r, d.y + d.r]);
-
-  var t = vis.transition()
-      .duration(d3.event.altKey ? 7500 : 750);
-
-  t.selectAll("circle")
-      .attr("cx", function(d) { return x(d.x); })
-      .attr("cy", function(d) { return y(d.y); })
-      .attr("r", function(d) { return k * d.r; });
-
-  t.selectAll("text")
-      .attr("x", function(d) { return x(d.x); })
-      .attr("y", function(d) { return y(d.y); })
-      .style("opacity", function(d) { return k * d.r > 20 ? 1 : 0; });
-
-  node = d;
-  d3.event.stopPropagation();
-}
-
+    <script src="/js/main.js" type="text/javascript">
     </script>
+
+    <footer>Interactive budget was created by, <a href="https://bigterminal.com">Adam Rabie</a>, <a href="https://twitter.com/WiseBeard">Brian Pullen</a> and <a href="http://johnbaker.ca/">John Baker</a> for CODE. Special thanks to D3 for charts and The New York Times for insperation.<
+    /footer>
   </body>
 </html>
