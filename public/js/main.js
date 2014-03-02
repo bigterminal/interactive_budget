@@ -35,6 +35,7 @@ function bubbleFullscreen(){
   $("circle.child").show();
   $(".zoom-mode").show();
   $(".normal-mode").hide();
+  $(".tooltip").hide();
 
 /*    
     $(".bubble-chart-cont svg").css({
@@ -65,6 +66,7 @@ function bubbleFullscreenReverse(){
   $("circle.parent").attr("opacity","1");
   $(".zoom-mode").hide();
   $(".normal-mode").show();
+  $(".tooltip").hide();
   /*
     
     $(".bubble-chart-cont svg").animate({
