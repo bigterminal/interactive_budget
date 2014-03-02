@@ -154,7 +154,7 @@ header {
   width: 100%;
   height: 55px;
   background-color: rgba(209, 214, 217, .75);
-  /* border-bottom: solid 1px #797D81; */
+  border-bottom: solid 1px rgba(121, 125, 129, .5);
 }
 
 header nav, .logo-cont {
