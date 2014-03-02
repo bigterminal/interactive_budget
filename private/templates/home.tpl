@@ -21,10 +21,19 @@
         <span>Federal Income</span>
 
       </nav>
+      <div class="share-cont">
+          <label>Share knowledge</label>
+          <div>
+              <div class="linkedin"></div>
+              <div class="twitter"></div>
+              <div class="facebook"></div>
+          </div>
+      </div>
     </header>
     <div class="information-box-cont zoom-mode">
       <h2>$<span>1.18</span> Billion<span class="change-info">+8.4%</span></h2>
       <h3>Department of Transportation</h3>
+      <div class="zoom-out"><span>-</span><span>Zoom out</span></div>
     </div>
     <div class="information-box-cont normal-mode">
       <h2>How $260 Billion was spent in 2013</h2>

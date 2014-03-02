@@ -112,27 +112,27 @@ d3.json("/api/budgets/d3", function(data) {
           if(delta > 0 && delta <= 5){
             $(this).css({"fill":"#46b29a", "stroke":"#308270"});
             $(this).attr("cy", windowHeight - d.y*0.35);
-            $(this).attr("cx", d.x*0.35);
+            $(this).attr("cx", d.x*0.55);
           } else if(delta > 5 && delta <= 15){
             $(this).css({"fill":"#3a9d88", "stroke":"#236456"});
-            $(this).attr("cy", windowHeight - d.y*0.55);
-            $(this).attr("cx", windowHeight + d.x*0.55);
+            $(this).attr("cy", windowHeight - d.y*0.45);
+            $(this).attr("cx", windowHeight + d.x*0.95);
           } else if(delta > 15){
             $(this).css({"fill":"#1b7e69", "stroke":"#257160"});
-            $(this).attr("cy", windowHeight - d.y*0.25);
-            $(this).attr("cx", windowHeight + d.x*0.25);
+            $(this).attr("cy", windowHeight - d.y*0.22);
+            $(this).attr("cx", windowHeight + d.x*0.35);
           } else if(delta < 0 && delta >= -5){
             $(this).css({"fill":"#eb6759", "stroke":"#dc594b"});
             $(this).attr("cy", windowHeight + d.y*0.65);
-            $(this).attr("cx", windowHeight - d.x/2.05);
+            $(this).attr("cx", windowHeight - d.x/3.95);
           } else if(delta < 5 && delta >= -15){
             $(this).css({"fill":"#e74c33", "stroke":"#ca422c"});
             $(this).attr("cy", windowHeight + d.y*0.75);
-            $(this).attr("cx", windowHeight + d.x/10.55);
+            $(this).attr("cx", windowHeight + d.x/2.55);
           } else if(delta < 15){
             $(this).css({"fill":"#c53b26", "stroke":"#ad301d"});
             $(this).attr("cy", windowHeight + d.y*0.95);
-            $(this).attr("cx", windowHeight + d.x/2.75); 
+            $(this).attr("cx", windowHeight + d.x/1.30); 
           } else if(delta === 0){
             $(this).css({"fill":"#9cb3c2", "stroke":"#849cab"});            
           } 
