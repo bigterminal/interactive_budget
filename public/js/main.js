@@ -111,32 +111,37 @@ d3.json("/api/budgets/d3", function(data) {
         var windowHeight = $(window).height() / 2.25;
           if(delta > 0 && delta <= 5){
             $(this).css({"fill":"#46b29a", "stroke":"#308270"});
-            $(this).attr("cy", windowHeight - d.y*0.25);
-            $(this).attr("cx", windowHeight + d.x*0.05);
+            $(this).attr("cy", windowHeight - d.y*0.35);
+            $(this).attr("cx", d.x*0.35);
           } else if(delta > 5 && delta <= 15){
             $(this).css({"fill":"#3a9d88", "stroke":"#236456"});
             $(this).attr("cy", windowHeight - d.y*0.55);
             $(this).attr("cx", windowHeight + d.x*0.55);
           } else if(delta > 15){
             $(this).css({"fill":"#1b7e69", "stroke":"#257160"});
-            $(this).attr("cy", windowHeight - d.y*0.75);
-            $(this).attr("cx", windowHeight + d.x*1.75);
+            $(this).attr("cy", windowHeight - d.y*0.55);
+            $(this).attr("cx", windowHeight + d.x*1.00);
           } else if(delta < 0 && delta >= -5){
             $(this).css({"fill":"#eb6759", "stroke":"#dc594b"});
-            $(this).attr("cy", windowHeight + d.y/1.25);
-            $(this).attr("cx", windowHeight + d.x/0.55);
+            $(this).attr("cy", windowHeight + d.y*0.65);
+            $(this).attr("cx", windowHeight - d.x/2.05);
           } else if(delta < 5 && delta >= -15){
             $(this).css({"fill":"#e74c33", "stroke":"#ca422c"});
-            $(this).attr("cy", windowHeight + d.y/1.75);
-            $(this).attr("cx", windowHeight + d.x/0.35);
+            $(this).attr("cy", windowHeight + d.y*0.75);
+            $(this).attr("cx", windowHeight + d.x/10.55);
           } else if(delta < 15){
             $(this).css({"fill":"#c53b26", "stroke":"#ad301d"});
-            $(this).attr("cy", windowHeight + d.y/1.95);
-            $(this).attr("cx", windowHeight + d.x/0.15); 
+            $(this).attr("cy", windowHeight + d.y*0.95);
+            $(this).attr("cx", windowHeight + d.x/2.75); 
           } else if(delta === 0){
             $(this).css({"fill":"#9cb3c2", "stroke":"#849cab"});            
           } 
+          if(d.name === "Public Debt"){
+            //  debugger;
+            $(this).attr("class","child special-show");
+          }
           return 
+
         }
       )
       .on("mouseover", function(d){
@@ -172,6 +177,21 @@ d3.json("/api/budgets/d3", function(data) {
       .on("click", function(d) { 
         if(d.name !== "Budget" || clicked != true){
           $(this).attr("opacity","0.5");
+          var value = d.value/10000;
+          var change = d.delta;
+          var dchar;
+
+          if (change >= 0) {
+            dchar = "+";
+          } else {
+            dchar = "";
+          }
+
+          $(".zoom-mode h3").text(d.name);
+          $(".zoom-mode h2 span").text(value.toFixed(3));
+          $(".zoom-mode .change-info").text(dchar + change.toFixed(3));
+
+
           bubbleFullscreen();
           clicked = true;
         } else {

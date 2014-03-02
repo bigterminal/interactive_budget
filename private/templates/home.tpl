@@ -28,12 +28,12 @@
     </div>
     <div class="information-box-cont normal-mode">
       <h2>How $260 Billion was spent in 2013</h2>
-      <p>Duis rhoncus nibh at quam blandit euismod. Donec ornare dui vitae magna euismod, vitae venenatis nisl pretium. Etiam iaculis fringilla mauris, et tristique tortor gravida eu</p>
+      <p>Discover how the Fedearl Government of Canada spends and changes its spending as a part of the annual budget.</p>
       
       <label>Circle size represents spending</label>
       <div class="scale-info-circl-big">
-        <label>$10 Billion</label>
-        <label>$1 Billion</label>
+        <label>$2.5 Billion</label>
+        <label>$0.5 Billion</label>
         <div class="scale-info-circl-small"></div>
       </div>
 
