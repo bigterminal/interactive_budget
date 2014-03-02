@@ -27,10 +27,12 @@ class API_Budgets_D3_Controller extends API_Controller {
                 foreach ($budgets as $budget) {
                     if ($budget->get_category_id() == $category->get_id()) {
                         $size = (int)round($budget->get_total_2014() / $this->scale);
-                        array_push($category_response['children'], array(
-                            'name' => $budget->get_name(),
-                            'size' => $size
-                        ));
+                        if ($size > 0) {
+                            array_push($category_response['children'], array(
+                                'name' => $budget->get_name(),
+                                'size' => $size
+                            ));
+                        }
                     }
                 }
                 
