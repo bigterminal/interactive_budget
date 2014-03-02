@@ -303,6 +303,14 @@ header nav .selected {
   font-weight: 500;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+}
+
 /* d3 stylings */
 
 text {
@@ -336,3 +344,6 @@ circle.child {
   display: none;
 }
 
+circle.parent:first-child {
+  display: none;
+}
