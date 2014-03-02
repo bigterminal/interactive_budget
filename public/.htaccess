@@ -1,0 +1,20 @@
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?p=$1 [L,QSA]
+
+Header unset Pragma
+FileETag None
+Header unset ETag
+
+<FilesMatch "\.(ico|jpg|jpeg|png|gif|js|css|swf|pdf|flv|mp3|svg)$">
+    <IfModule mod_expires.c>
+        ExpiresActive on
+        ExpiresDefault "access plus 14 days"
+        Header set Cache-Control "public"
+    </IfModule>
+</FilesMatch>
+<FilesMatch "\.(html|htm|xml|txt|xsl)$">
+    Header set Cache-Control "max-age=7200, must-revalidate"
+</FilesMatch>
