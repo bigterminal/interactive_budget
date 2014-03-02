@@ -1,6 +1,5 @@
 <?
 class API_Budgets_Controller extends API_Controller {
-    
     protected $total_2012 = 0;
     protected $total_2013 = 0;
     protected $total_2014 = 0;

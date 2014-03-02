@@ -17,6 +17,9 @@ class Routes {
             'API_Budgets_Controller' => array(
                 array('api', 'budgets')                                
             ),
+            'API_Budgets_D3_Controller' => array(
+                array('api', 'budgets', 'd3')                                
+            ),
             'API_Process_Data_Controller' => array(
                 array('api', 'process', 'data')                      
             )
