@@ -1,4 +1,4 @@
-Interactive Canadian Federal Budget
+Interactive Canadian Budget
 =========
 
 For the average or even sophisticated Canadian understanding and exploring the Federal Budget is a daunting task. Canadians are expected to be informed about the budget and understand the proposed increases and cuts along with government revenues and the deficit. Without this knowledge Canadians can not effectively communicate with their government and can not make informed voting decisions effectively stifling democracy on this critical subject. This is why we are creating the Interactive Budget to help inform and engage citizens about the budget and how our country spends its roughly $250 billion.
