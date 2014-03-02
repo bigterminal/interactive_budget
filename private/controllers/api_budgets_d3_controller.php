@@ -30,6 +30,7 @@ class API_Budgets_D3_Controller extends API_Controller {
                         if ($size > 0) {
                             array_push($category_response['children'], array(
                                 'name' => $budget->get_name(),
+                                'delta' => $budget->get_delta_p_2014_2013(),
                                 'size' => $size
                             ));
                         }
