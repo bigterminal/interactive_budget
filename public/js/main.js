@@ -1,6 +1,6 @@
-var w = 768,
-    h = 480,
-    r = 432,
+var w = $(window).width(),
+    h = $(window).height(),
+    r = parseInt($(window).height())-50,
     x = d3.scale.linear().range([0, r]),
     y = d3.scale.linear().range([0, r]),
     node,
@@ -20,13 +20,13 @@ var vis = d3.select(".bubble-chart-cont").insert("svg:svg", "h2")
 
 
 
-$.get("http://hackathon.local/api/budgets").done(function(data){
-    debugger;
-});
+
+
+
 
 
 function bubbleFullscreen(){
-    $("circle.child").show();
+/*    $("circle.child").show();
     $(".bubble-chart-cont svg").css({
       "margin-left": 0,
       "height": "100vh",
@@ -47,9 +47,11 @@ function bubbleFullscreen(){
     });
    $(".zoom-mode").show();
    $(".normal-mode").hide();
+   */
 }
 
 function bubbleFullscreenReverse(){
+  /*
     $("circle.child").hide();
     $(".bubble-chart-cont svg").animate({
       "margin-left": "",
@@ -71,11 +73,15 @@ function bubbleFullscreenReverse(){
 
    $(".zoom-mode").hide();
    $(".normal-mode").show();
+   */
 }
 
 
-d3.json("js/area.json", function(data) {
-  node = root = data;
+d3.json("http://hackathon.local/api/budgets/d3", function(data) {
+  //console.log(data);
+  budget = data.response.contents[0].budget;
+  console.log(budget);
+  node = root = budget;
 
   var nodes = pack.nodes(root);
 
