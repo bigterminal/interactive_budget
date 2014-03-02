@@ -13,8 +13,7 @@ Future Updates
 
 While the current version does a great job of giving you an overview of the budget we have many ideas of how to provide greater depth and more interesting layouts. We are currently developing many more sections that will be released in the months to come.
 
-1. <b>Federal Income</b>
-Our plan is to create a comprehensive chart detailing government revenue sources with interesting demographic information. For example we would show Corporate Income Tax along with a breakdown of the top 100 corporations contributing.
+1. <b>Federal Income</b>:<br>Our plan is to create a comprehensive chart detailing government revenue sources with interesting demographic information. For example we would show Corporate Income Tax along with a breakdown of the top 100 corporations contributing.
 
 2. <b>Spending/Income Map</b>
 We plan to create an interactive map of Canada using a Choropleth chart that shows annual spending and income per district. This will help Canadians understand what districts generate and spend the most money and provide a clear understanding of what areas are net positive or negative.
