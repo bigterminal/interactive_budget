@@ -158,8 +158,8 @@ header {
 
 header nav, .logo-cont {
   display: inline-block;
+  float: left;
 }
-
 
 header nav {
   margin-left: 40px;
@@ -289,6 +289,7 @@ header nav .selected {
   top: 325px;
   z-index: 12;
   padding-top: 15px;
+  pointer-events: visible;
 }
 
 .zoom-mode h2 {
