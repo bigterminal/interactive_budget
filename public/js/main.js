@@ -8,7 +8,13 @@ var w = $(window).width(),
 
 var pack = d3.layout.pack()
     .size([r, r])
-    .value(function(d) { return d.size; })
+    .value(function(d) { 
+      if (typeof d.size === 'undefined') {
+        return;
+      } else {
+        return d.size;
+      }
+    })
 
 var vis = d3.select(".bubble-chart-cont").insert("svg:svg", "h2")
     .attr("width", w)
@@ -17,9 +23,6 @@ var vis = d3.select(".bubble-chart-cont").insert("svg:svg", "h2")
     //.attr("preserveAspectRatio", "xMidYMid")
     .append("svg:g")
     .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
-
-
-
 
 
 
@@ -84,6 +87,7 @@ d3.json("http://hackathon.local/api/budgets/d3", function(data) {
   node = root = budget;
 
   var nodes = pack.nodes(root);
+
 
   vis.selectAll("circle")
       .data(nodes)      

@@ -1,7 +1,7 @@
 <?
 class API_Budgets_D3_Controller extends API_Controller {
     protected $response;
-    protected $scale = 1000;
+    protected $scale = 10000;
     
     function __construct($url_parts, $url_params, $payload) {
         parent::__construct($url_parts, $url_params, $payload);
@@ -36,7 +36,9 @@ class API_Budgets_D3_Controller extends API_Controller {
                     }
                 }
                 
-                array_push($this->response['budget']['children'], $category_response);
+                if (count($category_response['children']) > 0) {
+                    array_push($this->response['budget']['children'], $category_response);
+                }
             }
             
             $this->set_response_code(200);
