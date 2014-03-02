@@ -131,10 +131,11 @@ d3.json("http://hackathon.local/api/budgets/d3", function(data) {
           var radius = parseInt($(this).attr("r"));
           var colour = $(this).css("fill");
           var bottomOffset = $(window).height() - (radius * 2);
+          var value = d.value / 100000;
 
           left = left + radius;
           $(".tooltip > label > span").text(d.name);
-          $(".value > span:first-child").text(d.y.toFixed(2));
+          $(".value > span:first-child").text(value.toFixed(2));
           $(".tooltip .percent-change").text(parseFloat(d.delta.toFixed(2)) + "%");
           $(".tooltip .percent-change").css("color",colour);
 

@@ -24,7 +24,7 @@
       </nav>
     </header>
     <div class="information-box-cont zoom-mode">
-      <h2>$1.18 Billion<span class="change-info">+8.4%</span></h2>
+      <h2>$<span>1.18</span> Billion<span class="change-info">+8.4%</span></h2>
       <h3>Department of Transportation</h3>
     </div>
     <div class="information-box-cont normal-mode">
