@@ -17,7 +17,7 @@ class API_Budgets_D3_Controller extends API_Controller {
                     'children' => array()
                 )
             );
-            
+                
             foreach ($categories as $category) {
                 $category->total_2013 = 0;
                 $category->total_2014 = 0;

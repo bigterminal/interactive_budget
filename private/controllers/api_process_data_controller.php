@@ -87,6 +87,7 @@ class API_Process_Data_Controller extends API_Controller {
                 if ($budget->save()) $this->budgets_processed++;
             }
         }
+        
     }
     
     function clear_data() {
